@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Us</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./styles/common.css" media = "screen" />
+<link rel="stylesheet" type="text/css" href="./styles/left_nav.css" media = "screen" />
+<style>
+#stuff_list 		 					{width: 750px; margin-left : auto; margin-right: auto;}
+#stuff_list tr > td:nth_child(1) > img  {width:600px; height: 600px; border: 1px solid black}
+#stuff_list tr > td:nth_child(2) > h2 	{text-align: center}
+
+</style>
+</head>
+
+<body id = "whole_page">
+
+
+<div id = "logo">
+	<div id = "nav_bar">
+		<table class = "container_tb" id = "nav_bar_container" >
+			<tr>
+				<td>
+					<div id='nav_menu'>
+						<ul>
+							<li><a class='active' href='./index.html'><span>Home</span></a></li>
+							<li><a href='./tutorial.html'><span>HTML Tutorial</span></a></li>
+							<li><a href='./reference_main.html'><span>References</span></a></li>
+							<li><a href='./site_map.html'><span>Site Map</span></a></li>
+							<li><a href='./about_us.html'><span>About Us</span></a></li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<form action = "./form.html">
+						<input id = "nav_search_box"    type = "text" value = " Search here ...">
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h2>CYFF</h2>
+	<h1 style = "text-align:center">HTML Guide</h1>
+	<br>
+</div>
+
+<table id = "nav_main_container" class = "container_tb">
+<tr>
+<td id = "left">
+	<div id='cssmenu'>
+	<ul>
+		<li><a  href='./index.html'><span>Home</span></a></li>
+		<li><a href='./tutorial.html'><span>Tutorials</span></a></li>
+		<li class='has-sub'><a href='reference_main.html'><span>References</span></a>
+			<ul>
+				<li><a href='./reference_nav.html?category_name=structure_tags'><span>Structure Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=meta_information_tags'><span>Meta Information Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=text_tags'><span>Text Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=links'><span>Links</span></a></li>
+				<li><a href='./reference_nav.html?category_name=image_and_object_tags'><span>Image and Object Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=list_table_and_form_tags'><span>List, Table and Form Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=scripts'><span>Scripts</span></a></li>
+			</ul>
+		</li>
+		<li><a href='./site_map.html'><span>Site Map</span></a></li>
+		<li><a class='active' href='./about_us.html'><span>About Us</span></a></li>
+	</ul>
+	</div>
+</td>
+
+<td id = "right">
+
+<div id = "navigation_links">
+	<a href = "./index.html">Home>></a>
+	<a href = "./about_us.html">About Us>></a>
+	<h1 style = "text-align:center">About Us</h1>
+	<hr style = "width: 750px" >
+</div>
+
+<div id = "main_content">
+	<table id = "stuff_list">
+		<tr>
+			<td><img src = "./images/stuff_c.jpg" alt = "image is missing"></td>
+			<td><h2>Ruofei Chen</h2></td>
+		</tr>
+		<tr>
+			<td><img src = "./images/stuff_y.jpg" alt = "image is missing"></td>
+			<td><h2>Yinyan Yu</h2></td>
+		</tr>
+		<tr>
+			<td><img src = "./images/stuff_fzy.jpg" alt = "image is missing"></td>
+			<td><h2>Zhongyi Fan</h2></td>
+		</tr>
+		<tr>
+			<td><img src = "./images/stuff_fc.jpg" alt = "image is missing"></td>
+			<td><h2>Chao Fan</h2></td>
+		</tr>
+	</table>
+</div>
+
+<div id = "nav_area">
+</div>
+
+<div id = "footer">
+<footer>
+<hr>
+<p>Copy Right 2015, Team CYFF, All Rights Reserved</p>
+</footer>
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+</body>
+</html>

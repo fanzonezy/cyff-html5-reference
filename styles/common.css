@@ -1,0 +1,175 @@
+html, body {
+	margin: 0px;
+	width: 100%;
+	height: 100%
+}
+
+#nav_main_container{
+	width: 100%; height: 100%;
+}
+
+/* container of left half of the page(navigation) */
+#left{
+	width: 20%;
+	height: 100%;
+	vertical-align: top; /* to make  navigation bars start at the top */
+	background: #333333; /* use the same color as left navigation bars */
+}
+
+/* container of right half of the page */
+#right{
+	width: 80%;
+	height: 100%;
+	vertical-align: top; /* to make  navigation bars start at the top */
+}
+
+#left > div{
+	height: 100%;
+}
+
+#right > div{
+}
+
+
+
+#nav_bar{ /* the whole top nvaigation area */
+	background: #1f1f20; 
+	width: 100%;
+}
+
+#nav_bar table tr td:nth-child(2){
+	text-align: right;
+	padding-right: 20px
+}
+
+#nav_bar_container{ /* the container which contains navigation menu and search box */
+	width: 100%;
+}
+
+#nav_menu, #nav_menu ul, #nav_menu ul li, #nav_menu ul li a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style: none;
+	line-height: 1;
+	display: block;
+	position: relative;
+	font-family: Capriola, Helvetica, sans-serif;
+}
+
+#nav_menu {
+	width: 100%;
+	height: 45px;
+}
+
+#nav_menu.align-right {
+	float: right;
+}
+
+#nav_menu.align-right ul li {
+	float: right;
+	margin-right: 0;
+	margin-left: 4px;
+}
+					
+#nav_menu ul {
+	height: 45px;
+}
+
+#nav_menu ul li {
+	float: left;
+}
+
+#nav_menu ul li a {
+	padding: 15px 30px;
+	color: #eeeeee;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+#nav_menu ul li a:hover, #cssmenu ul li a.active {
+	background: #606d80;
+}
+
+#nav_search_box{
+    background: #444;
+    border: 0 none;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #777;
+    width: 150px;
+    padding: 6px 15px 6px 35px;
+    border-radius: 20px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    transition: all 0.7s ease 0s;
+}
+#nav_search_box:focus {
+    width: 200px;
+}
+
+#logo{
+	background: #003866; 
+	width: 100%; 
+	color : #ffffff; 
+	height: 220px 
+}
+#logo h2{
+	margin-left: 20px;
+}
+
+#navigation_links{
+	width: 750px; 
+	margin-left: auto; 
+	margin-right: auto
+}
+
+#main_content{
+	width: 750px; 
+	margin-left: auto; 
+	margin-right: auto
+}
+
+#footer{
+	width: 750px; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#nav_area{
+	width: 750px; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+.text_block{
+	border: 1px solid black; 
+	width: 714px; 
+	padding: 18px
+} 
+.table_block{
+	border: 1px solid black; 
+	width: 750px
+}
+.stext{
+	border: 1px solid black;
+	text-align: center
+}
+.ltext{
+	border: 1px solid black;
+	text-align: left
+}
+
+.content_tb{
+	border: 1px solid black; 
+}
+
+.container_tb{
+	border-spacing: 0;
+	padding: 0px
+}
+
+.container_tb tr td{
+	padding : 0px; 
+}
+
+				

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form,table and list</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./styles/common.css" media = "screen" />
+<link rel="stylesheet" type="text/css" href="./styles/left_nav.css" media = "screen" />
+<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+<script>
+	var dataRef = new Firebase("https://html5-cyff.firebaseio.com/data"); // create data base reference at loading time
+</script>
+<style>
+
+#tag_list	{width: 100%}
+#tag_list tr > td:first-child  {width: 30%}
+#tag_list tr > td:nth_child(2) {width: 70%}
+
+</style>
+</head>
+
+<body id = "whole_page">
+
+
+
+<div id = "logo">
+	<div id = "nav_bar">
+		<table class = "container_tb" id = "nav_bar_container" >
+			<tr>
+				<td>
+					<div id='nav_menu'>
+						<ul>
+							<li><a class='active' href='./index.html'><span>Home</span></a></li>
+							<li><a href='./tutorial.html'><span>HTML Tutorial</span></a></li>
+							<li><a href='./reference_main.html'><span>References</span></a></li>
+							<li><a href='./site_map.html'><span>Site Map</span></a></li>
+							<li><a href='./about_us.html'><span>About Us</span></a></li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<form action = "./form.html">
+						<input id = "nav_search_box"    type = "text" value = " Search here ...">
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h2>CYFF</h2>
+	<h1 style = "text-align:center">HTML Guide</h1>
+	<br>
+</div>
+
+<table id = "nav_main_container" class = "container_tb">
+<tr>
+<td id = "left">
+	<div id='cssmenu'>
+	<ul>
+		<li><a href='./index.html'><span>Home</span></a></li>
+		<li><a href='./tutorial.html'><span>Tutorials</span></a></li>
+		<li class='active has-sub'><a href='reference_main.html'><span>References</span></a>
+			<ul>
+				<li><a href='./reference_nav.html?category_name=structure_tags'><span>Structure Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=meta_information_tags'><span>Meta Information Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=text_tags'><span>Text Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=links'><span>Links</span></a></li>
+				<li><a href='./reference_nav.html?category_name=image_and_object_tags'><span>Image and Object Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=list_table_and_form_tags'><span>List, Table and Form Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=scripts'><span>Scripts</span></a></li>
+			</ul>
+		</li>
+		<li><a href='./site_map.html'><span>Site Map</span></a></li>
+		<li><a href='./about_us.html'><span>About Us</span></a></li>
+	</ul>
+	</div>
+</td>
+
+<td id = "right">
+
+<div id = "navigation_links">
+	<a href = "./index.html">Home>></a>
+	<a href = "./reference_main.html">References>></a>
+	<a  id = "current_link" href = "#"></a>
+
+	<h1 id = "list_title" style = "text-align:center"></h1>
+	<hr style = "width: 750px" >
+</div>
+
+<div id = "main_content">
+	<table class = "content_tb" id = "tag_list">
+	</table>
+</div>
+
+<div id = "footer">
+<footer>
+<hr>
+<p>Copy Right 2015, Team CYFF, All Rights Reserved</p>
+</footer>
+</div>
+
+</td>
+</tr>
+</table>
+
+<script>
+
+function parseCategory(name){
+	var start = document.URL.search(name);
+
+    start = start + name.length + 1; 
+    var end = start;
+   	for ( ; end < document.URL.length; end ++ )
+    {
+    	if (document.URL[end] == '?') break;
+    } 
+   	return document.URL.slice(start, end);
+}
+
+function generateTitleAndNavigationLink(category){
+	var listTitle = document.getElementById('list_title');
+	var navigationLink = document.getElementById('current_link');
+	switch(category){
+		case 'structure_tags': 
+			listTitle.innerHTML = "Structure Tags";
+			navigationLink.innerHTML = "structure tags>>"; 
+			break; 
+		case 'meta_information_tags':
+			listTitle.innerHTML = "Meta Information Tags"; 
+			navigationLink.innerHTML = "meta information tags>>"; 
+			break;
+		case 'text_tags':
+			listTitle.innerHTML = "Text Tags"; 
+			navigationLink.innerHTML = "text tags>>"; 
+			break;
+		case 'links':
+			listTitle.innerHTML = "Links"; 
+			navigationLink.innerHTML = "links>>"; 
+			break;
+		case 'image_and_object_tags':
+			listTitle.innerHTML = "Image and Object Tags"; 
+			navigationLink.innerHTML = "image and object tags>>"; 
+			break;
+		case 'list_table_and_form_tags':
+			listTitle.innerHTML = "List, table and Form Tags";
+			navigationLink.innerHTML = "list, table and form tags>>";  
+			break;
+		case 'scripts':
+			listTitle.innerHTML = "Scripts"; 
+			navigationLink.innerHTML = "scripts>>"; 
+			break;
+		default: break;
+	}
+}
+
+
+var category = parseCategory('category_name');
+
+generateTitleAndNavigationLink(category);
+dataRef.child('nav_info/' + category).on('value', function(snapshot){
+	var parentList = document.getElementById('tag_list');
+    snapshot.forEach(function (item){
+
+		//alert(item.val());
+        var listItem = document.createElement('TR'); // create a new list row
+        var tagName = document.createElement('TD');  // first entry: tag name
+        var tagName_a = document.createElement('A'); // first entry > link: hyper-referece
+        var tagDef = document.createElement('TD');   // second entry: tag definition
+		
+        tagName.className = 'stext';
+        tagName_a.setAttribute('href', './form.html?tag_name=' + item.val());
+        tagName_a.innerHTML = "&lt;" + item.key() + '&gt;';
+    
+        tagDef.innerHTML = item.val(); 
+        tagDef.className = 'ltext';
+        
+        tagName.appendChild(tagName_a);
+        listItem.appendChild(tagName);
+        listItem.appendChild(tagDef);
+        //alert('Hi');
+        parentList.appendChild(listItem);
+    })
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>controler panel</title>
+	<meta charset = "utf-8">
+	<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+	<script>var dataRef = new Firebase("https://html5-cyff.firebaseio.com");</script>
+	<script type = 'text/javascript'></script>
+	</head>
+
+	<body>
+		<div id = "add_op">
+			<label>File Path:</label><br>
+			<textarea id = "add_path"    rows = 1 cols = 200></textarea><br>
+			<label>Content:</label><br>
+			<textarea id = "add_content" rows = 100 cols = 200></textarea>
+			<br>
+			<button id = "add_submit" type = "button">submit</button>
+		</div>
+
+		<script>
+			function test(id1, id2) {
+            	alert('test');
+            	alert(id1 + " " + id2);
+        	}
+
+			function addFromInput(pathareaId, textareaId){ 
+				
+            	var inputPath = document.getElementById(pathareaId).value; // get path
+            	var inputText = document.getElementById(textareaId).value; // get input json string
+            	var jsonObj = JSON.parse(inputText);
+            
+            	alert('json parsing sucessful.');
+			
+            	if (inputPath.length != 0){				
+                	alert('add at '+ inputPath);
+
+					if (dataRef){
+						var addPos = dataRef.child(inputPath);
+					}else{
+						alert('ERROR: UNINITIALIZED');
+					}
+
+                	if (addPos){
+						onComplete = function(error){
+                            if (error){
+                                alert('failed');
+                            }else{
+                                alert('successful');
+                            }
+                        }
+						alert('about to add');
+                    	addPos.set(jsonObj, onComplete);
+                    	alert('finished');
+                	}
+                	else{
+                    	alert('path does not exist');
+                	}
+
+            	}else{
+                	alert('add at root');
+                	dataRef.set(jsonObj);
+                	alert('finished');
+            	}
+        	}
+
+			document.getElementById('add_submit').addEventListener('click', function() {
+				addFromInput("add_path", "add_content");
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>form</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./styles/common.css" media = "screen" />
+<link rel="stylesheet" type="text/css" href="./styles/left_nav.css" media = "screen" />
+<style>
+
+
+#attr_list           {}
+#attr_list  tr > td:nth-child(1) {width: 15%}
+#attr_list  tr > td:nth-child(2) {width: 15%}
+#attr_list  tr > td:nth-child(3) {width: 70%}
+
+#browser_sup_list    {}
+#browser_sup_list  tr > td:first-child  {width: 150px; font-size: 16px}
+#browser_sup_list  tr > td:nth-child(2) {width: 120px}
+#browser_sup_list  tr > td:nth-child(3) {width: 120px}
+#browser_sup_list  tr > td:nth-child(4) {width: 120px}
+#browser_sup_list  tr > td:nth-child(5) {width: 120px}
+#browser_sup_list  tr > td:nth-child(6) {width: 120px}
+
+</style>
+</head>
+
+<body id = "whole_page">
+
+<div id = "logo">
+	<div id = "nav_bar">
+		<table class = "container_tb" id = "nav_bar_container" >
+			<tr>
+				<td>
+					<div id='nav_menu'>
+						<ul>
+							<li><a class='active' href='./index.html'><span>Home</span></a></li>
+							<li><a href='./tutorial.html'><span>HTML Tutorial</span></a></li>
+							<li><a href='./reference_main.html'><span>References</span></a></li>
+							<li><a href='./site_map.html'><span>Site Map</span></a></li>
+							<li><a href='./about_us.html'><span>About Us</span></a></li>
+						</ul>
+					</div>
+				</td>
+				<td>
+					<form action = "./form.html">
+						<input id = "nav_search_box"    type = "text" value = " Search here ...">
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<h2>CYFF</h2>
+	<h1 style = "text-align:center">HTML Guide</h1>
+	<br>
+</div>
+
+<table id = "nav_main_container" class = "container_tb">
+<tr>
+<td id = "left">
+	<div id='cssmenu'>
+	<ul>
+		<li><a  href='./index.html'><span>Home</span></a></li>
+		<li><a href='./tutorial.html'><span>Tutorials</span></a></li>
+		<li class='active has-sub'><a href='reference_main.html'><span>References</span></a>
+			<ul>
+				<li><a href='#'><span>Structure Tags</span></a></li>
+				<li><a href='#'><span>Meta Information Tags</span></a></li>
+				<li><a href='#'><span>Text Tags</span></a></li>
+				<li><a href='#'><span>Links</span></a></li>
+				<li><a href='#'><span>Image and Object Tags</span></a></li>
+				<li><a href='./reference_list_table_form_list.html'><span>List, Table and Form Tags</span></a></li>
+				<li><a href='#'><span>Script</span></a></li>
+			</ul>
+		</li>
+		<li><a href='./site_map.html'><span>Site Map</span></a></li>
+		<li><a href='./about_us.html'><span>About Us</span></a></li>
+	</ul>
+	</div>
+</td>
+
+<td id = "right">
+
+<div id = "navigation_links">
+	<a href = "./index.html">Home>></a> 
+	<a href = "./reference_main.html">Reference>></a> 
+	<a href = "./reference_list_table_form_list.html">list & table & form>></a> 
+	<a href = "./form.html">form>></a>
+	<h1 style = "text-align:center"> &lt;form&gt; </h1>
+	<hr style = "width: 750px" >
+</div>
+
+<div id = "main_content">
+
+	<section id = "definition">
+		<h2>Definition</h2>
+		<div class = "text_block"> 
+			This element indicates a media object to include in an HTML document. Usually, the object is a graphic image, but some implementations support movies and animations.
+		</div>
+    </section>
+  
+    <section id = "usage">
+		<h2>Usage</h2>
+		<div class = "text_block">   
+			<pre>&lt;form
+	accept-charset="list of supported character sets"
+	action="url"
+	class="class name(s)"
+	dir="ltr | rtl"
+	enctype="application/x-www-form-urlencoded | multipart/form-data 
+			|text/plain | Media Type as per RFC 2045"
+	id="unique alphanumeric identifier"
+	lang="language code"
+	method="GET | POST"
+	style="style information"
+	target="_blank | frame name | _parent | _self | _top" (transitional)
+	title="advisory text"&gt;
+&lt;/form&gt;</pre>
+		</div>
+    </section>
+  
+    <section id = "specification_of_attribuyes">
+		<h2>Specification of Attributes</h2>
+		<div class = "table_block"> 
+			<table class = "content_table" id = "attr_list">
+				<tr>
+					<td class = "stext"><b> Attribute </b></td>
+					<td class = "stext"><b> Value </b></td>
+					<td class = "stext"><b> Specification </b></td>
+				</tr>
+
+				<tr>
+					<td class = "stext">accept</td>
+					<td class = "stext">file_type</td>
+					<td class = "ltext"><p>(Not supported in HTML5) Specifies a comma-separated list of file types  that the server accepts (that can be submitted through the file upload)</p></td>                
+				</tr>
+	  
+				<tr>
+					<td class = "stext">accept-charset</td>
+					<td class = "stext">character_set</td>
+					<td class = "ltext"><p>Specifies the character encodings that are to be used for the form submission</p></td>                
+				</tr>
+	  
+				<tr>
+					<td class = "stext">action</td>
+					<td class = "stext">URL</td>
+					<td class = "ltext"><p>Specifies where to send the form-data when a form is submitted</p></td>                
+				</tr>
+
+				<tr>
+					<td class = "stext">enctype</td>
+					<td class = "stext">application multipart text</td>
+					<td class = "ltext"><p>Specifies how the form-data should be encoded when submitting it to the server (only for method="post")</p></td>                
+				</tr>
+				
+				<tr>
+					<td class = "stext">method</td>
+					<td class = "stext">get, post</td>
+					<td class = "ltext"><p>Specifies the HTTP method to use when sending form-data</p></td>
+				</tr>
+				
+				<tr>
+					<td class = "stext">name</td>
+					<td class = "stext">text</td>
+					<td class = "ltext"><p>Specifies the name of a form</p></td>
+				</tr>
+				
+				<tr>
+					<td class = "stext">novalidate</td>
+					<td class = "stext">novalidate</td>
+					<td class = "ltext"><p>Specifies that the form should not be validated when submitted</p></td>
+				</tr>
+				
+				<tr>
+					<td class = "stext">target</td>
+					<td class = "stext">_blank, _self, _parent, _top</td>
+					<td class = "ltext"><p>Specifies where to display the response that is received after submitting the form</p></td>
+				</tr>
+				
+				
+			</table>
+		</div>
+	</section>
+  
+	<section id = "exmple">
+		<h2>Example</h2>
+		<div class = "text_block">
+			<pre>&lt;form 
+	action="http://www.bigcompany.com/cgi-bin/processit.exe"
+	method="POST" name="testform" onsubmit="validate()">
+	Enter your comments here:&lt;br&gt;
+	&lt;textarea name="comments" cols="30" rows="8"&gt;&lt;/textarea&gt;
+	&lt;br&gt;
+	&lt;input type="submit"&gt;
+	&lt;input type="reset"&gt;
+&lt;/form&gt;</pre>
+		</div>
+    </section>
+  
+	<section id = "browser_support">
+		<h2>Browser Support</h2>
+		<div class = "table_block"> 
+			<table class = "content_table" id = "browser_sup_list">
+				<tr>
+					<td class = "stext">Element</td>
+					<td class = "stext"><img src = "./images/chrome.jpg"  height = "70" width = "70" alt = "Image is missing"></td>
+					<td class = "stext"><img src = "./images/safari.jpg"  height = "70" width = "70" alt = "Image is missing"></td>
+					<td class = "stext"><img src = "./images/firefox.jpg" height = "70" width = "70" alt = "Image is missing"></td>
+					<td class = "stext"><img src = "./images/IE.jpg"      height = "70" width = "70" alt = "Image is missing"></td>
+					<td class = "stext"><img src = "./images/opera.jpg"   height = "70" width = "70" alt = "Image is missing"></td>                
+				</tr>
+				<tr>
+					<td class = "stext">&lt;form&gt;</td>
+					<td class = "stext">Yes</td>
+					<td class = "stext">Yes</td>
+					<td class = "stext">Yes</td>
+					<td class = "stext">Yes</td>
+					<td class = "stext">Yes</td>
+				</tr>
+			</table>
+		</div>
+    </section>
+  
+	<section id = "default_css">
+		<h2>Default CSS</h2>
+		<div class = "text_block"> 
+			<pre>
+	form {
+    		display: block;
+    		margin-top: 0em;
+     	}</pre>
+		</div>
+	</section>
+
+</div>
+
+<div id = "footer">
+<footer>
+<hr>
+<p>Copy Right 2015, Team CYFF, All Rights Reserved</p>
+</footer>
+</div>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>
+ 
+
+
+
+

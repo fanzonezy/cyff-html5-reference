@@ -2,7 +2,7 @@
     "form": {
         "definition": "This element indicates a media object to include in an HTML document. Usually, the object is a graphic image, but some implementations support movies and animations.",
         "usage": [
-            "&lt;form",
+            "lt;form",
             "accept-charset = \"list of supported character sets\"",
             "action = \"url\"",
             "class = \"class name(s)\"",
@@ -13,8 +13,7 @@
             "method = \"GET|POST\"",
             "style=\"styleinformation\"",
             "target=\"_blank|framename|_parent|_self|_top(transitional)\"",
-            "title=\"advisorytext\" &gt;",
-	    "&lt;\/form&gt;"
+            "title=\"advisorytext\""
         ],
         "specification_of_attributes": {
             "accept": [

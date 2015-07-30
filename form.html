@@ -5,8 +5,15 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./styles/common.css" media = "screen" />
 <link rel="stylesheet" type="text/css" href="./styles/left_nav.css" media = "screen" />
+<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+<script>
+    var dataRef = new Firebase("https://html5-cyff.firebaseio.com/data"); // create data base reference at loading time
+</script>
 <style>
 
+#usage_text {overflow-x: scroll }
+#example_text {overflow-x: scroll}
+#default_css_text {overflow-x: scroll}
 
 #attr_list           {}
 #attr_list  tr > td:nth-child(1) {width: 15%}
@@ -83,9 +90,9 @@
 <div id = "navigation_links">
 	<a href = "./index.html">Home>></a> 
 	<a href = "./reference_main.html">Reference>></a> 
-	<a href = "./reference_list_table_form_list.html">list & table & form>></a> 
-	<a href = "./form.html">form>></a>
-	<h1 style = "text-align:center"> &lt;form&gt; </h1>
+	<a href = "#" id = "last_level_link"></a>    <!--These two links will be rendered at loading time--> 
+	<a href = "#" id = "curr_level_link"></a>
+	<h1 style = "text-align:center" id = "page_title"></h1>           <!--The title of this pahe will be rendered at loading time-->
 	<hr style = "width: 750px" >
 </div>
 
@@ -93,107 +100,30 @@
 
 	<section id = "definition">
 		<h2>Definition</h2>
-		<div class = "text_block"> 
-			This element indicates a media object to include in an HTML document. Usually, the object is a graphic image, but some implementations support movies and animations.
-		</div>
+		<div class = "text_block" id = "def_text"></div>
     </section>
   
     <section id = "usage">
 		<h2>Usage</h2>
-		<div class = "text_block">   
-			<pre>&lt;form
-	accept-charset="list of supported character sets"
-	action="url"
-	class="class name(s)"
-	dir="ltr | rtl"
-	enctype="application/x-www-form-urlencoded | multipart/form-data 
-			|text/plain | Media Type as per RFC 2045"
-	id="unique alphanumeric identifier"
-	lang="language code"
-	method="GET | POST"
-	style="style information"
-	target="_blank | frame name | _parent | _self | _top" (transitional)
-	title="advisory text"&gt;
-&lt;/form&gt;</pre>
-		</div>
+		<div class = "text_block" id = "usage_text"></div>
     </section>
   
     <section id = "specification_of_attribuyes">
 		<h2>Specification of Attributes</h2>
-		<div class = "table_block"> 
+		<div class = "table_block" > 
 			<table class = "content_table" id = "attr_list">
 				<tr>
 					<td class = "stext"><b> Attribute </b></td>
 					<td class = "stext"><b> Value </b></td>
 					<td class = "stext"><b> Specification </b></td>
-				</tr>
-
-				<tr>
-					<td class = "stext">accept</td>
-					<td class = "stext">file_type</td>
-					<td class = "ltext"><p>(Not supported in HTML5) Specifies a comma-separated list of file types  that the server accepts (that can be submitted through the file upload)</p></td>                
-				</tr>
-	  
-				<tr>
-					<td class = "stext">accept-charset</td>
-					<td class = "stext">character_set</td>
-					<td class = "ltext"><p>Specifies the character encodings that are to be used for the form submission</p></td>                
-				</tr>
-	  
-				<tr>
-					<td class = "stext">action</td>
-					<td class = "stext">URL</td>
-					<td class = "ltext"><p>Specifies where to send the form-data when a form is submitted</p></td>                
-				</tr>
-
-				<tr>
-					<td class = "stext">enctype</td>
-					<td class = "stext">application multipart text</td>
-					<td class = "ltext"><p>Specifies how the form-data should be encoded when submitting it to the server (only for method="post")</p></td>                
-				</tr>
-				
-				<tr>
-					<td class = "stext">method</td>
-					<td class = "stext">get, post</td>
-					<td class = "ltext"><p>Specifies the HTTP method to use when sending form-data</p></td>
-				</tr>
-				
-				<tr>
-					<td class = "stext">name</td>
-					<td class = "stext">text</td>
-					<td class = "ltext"><p>Specifies the name of a form</p></td>
-				</tr>
-				
-				<tr>
-					<td class = "stext">novalidate</td>
-					<td class = "stext">novalidate</td>
-					<td class = "ltext"><p>Specifies that the form should not be validated when submitted</p></td>
-				</tr>
-				
-				<tr>
-					<td class = "stext">target</td>
-					<td class = "stext">_blank, _self, _parent, _top</td>
-					<td class = "ltext"><p>Specifies where to display the response that is received after submitting the form</p></td>
-				</tr>
-				
-				
+				</tr>	
 			</table>
 		</div>
 	</section>
   
 	<section id = "exmple">
 		<h2>Example</h2>
-		<div class = "text_block">
-			<pre>&lt;form 
-	action="http://www.bigcompany.com/cgi-bin/processit.exe"
-	method="POST" name="testform" onsubmit="validate()">
-	Enter your comments here:&lt;br&gt;
-	&lt;textarea name="comments" cols="30" rows="8"&gt;&lt;/textarea&gt;
-	&lt;br&gt;
-	&lt;input type="submit"&gt;
-	&lt;input type="reset"&gt;
-&lt;/form&gt;</pre>
-		</div>
+		<div class = "text_block" id = "example_text"></div>
     </section>
   
 	<section id = "browser_support">
@@ -208,6 +138,7 @@
 					<td class = "stext"><img src = "./images/IE.jpg"      height = "70" width = "70" alt = "Image is missing"></td>
 					<td class = "stext"><img src = "./images/opera.jpg"   height = "70" width = "70" alt = "Image is missing"></td>                
 				</tr>
+				<!-- This is an example of second row:
 				<tr>
 					<td class = "stext">&lt;form&gt;</td>
 					<td class = "stext">Yes</td>
@@ -216,19 +147,14 @@
 					<td class = "stext">Yes</td>
 					<td class = "stext">Yes</td>
 				</tr>
+				-->
 			</table>
 		</div>
     </section>
   
 	<section id = "default_css">
 		<h2>Default CSS</h2>
-		<div class = "text_block"> 
-			<pre>
-	form {
-    		display: block;
-    		margin-top: 0em;
-     	}</pre>
-		</div>
+		<div class = "text_block", id = "default_css_text"></div>
 	</section>
 
 </div>
@@ -243,6 +169,157 @@
 </td>
 </tr>
 </table>
+
+<script>
+function parseValue(key){
+    var start = document.URL.search(key);
+
+    start = start + key.length + 1; 
+    var end = start;
+    for ( ; end < document.URL.length; end ++ )
+    {
+        if (document.URL[end] == '&') break;
+    } 
+    return document.URL.slice(start, end);
+}
+
+function generateTitleAndNavigationLink (snapshot){
+	var category_name = snapshot.child('category').val(); // get category name
+	var tag_name = snapshot.key();  // get tag name
+
+	last_level_link_ele = document.getElementById('last_level_link');
+	last_level_link_ele.innerHTML = category_name.replace(/_/g, ' ') + ">>";
+	last_level_link_ele.setAttribute('href', './reference_nav.html?category_name=' + category_name);
+
+	curr_level_link_ele = document.getElementById('curr_level_link');
+	curr_level_link_ele.innerHTML = tag_name + ">>";
+
+	page_title = document.getElementById('page_title');
+	page_title.innerHTML = "&lt;" + tag_name + "&gt;";
+}
+
+function generateDefinition (snapshot){
+	document.getElementById('def_text').innerHTML = (snapshot.val())['definition'];
+}
+
+function generateUsage (snapshot) {
+	var usage = snapshot.child('usage');
+	var text = '';
+	
+	//combine usage text 
+	usage.forEach (function (line){
+		text = text + line.val() + "\n";
+	});
+
+	var container = document.getElementById('usage_text')
+
+	if (container){
+		container.innerHTML = '<pre>' + text + '<pre>';
+	}else{
+		alert("RENDER ERROR: can not write \"Usage\"");
+	}
+}
+
+function generateAttributeList (snapshot) {
+	var list_items = snapshot.child('specification_of_attributes');
+	var attr_list = document.getElementById('attr_list');
+	list_items.forEach (function (list_item){
+		// create needed items
+		var row        = document.createElement('TR');
+		var attr_name  = document.createElement('TD');
+		var attr_value = document.createElement('TD');
+		var attr_spec  = document.createElement('TD');
+
+		// set classes
+		attr_name.className  = 'stext';
+		attr_value.className = 'stext';
+		attr_spec.className  = 'ltext';
+
+		// set text
+		attr_name.innerHTML  = list_item.key();
+		attr_value.innerHTML = (list_item.val())['0'];
+		attr_spec.innerHTML  = '<p>' + (list_item.val())['1'] + '</p>';
+
+		// add to list row
+		row.appendChild(attr_name);
+		row.appendChild(attr_value);
+		row.appendChild(attr_spec);
+
+		// add row to list
+		attr_list.appendChild(row);
+	});
+}
+
+function generateExample (snapshot) {
+	var example = snapshot.child('example');
+    var text = '';
+    
+    //combine usage text 
+    example.forEach (function (line){
+        text = text + line.val() + "\n";
+    });
+
+    var container = document.getElementById('example_text')
+
+    if (container){
+        container.innerHTML = '<pre>' + text + '<pre>';
+    }else{
+        alert("RENDER ERROR: can not write \"Example\"");
+    }
+}
+
+function generateBrowserSupportList (snapshot) {
+	var browser_support = snapshot.child('browser_support');
+	var row = document.createElement('TR');
+	var name = document.createElement('TD');
+	
+	//alert('Hi');
+	name.innerHTML = '&lt;' + tag_name + '&gt;'; // tag_name is a global variable
+	name.className = 'stext';
+	row.appendChild(name);
+
+	//alert('Hi');
+	browser_support.forEach (function (sup_or_not){
+		var cell = document.createElement('TD');
+		cell.innerHTML = sup_or_not.val();
+		cell.className = 'stext';
+		row.appendChild(cell);
+	});
+
+	var browser_support_list = document.getElementById('browser_sup_list');
+	browser_support_list.appendChild(row);
+}
+
+function generateDefaultCss (snapshot) {
+	var importedDataItems = snapshot.child('default_css');
+    var text = '';
+    
+    //combine usage text 
+    importedDataItems.forEach (function (line){
+        text = text + line.val() + "\n";
+    });
+
+    var container = document.getElementById('default_css_text')
+
+    if (container){
+        container.innerHTML = '<pre>' + text + '<pre>';
+    }else{
+        alert("RENDER ERROR: can not write \"Default CSS\"");
+    }
+}
+
+var tag_name = parseValue('tag_name');
+dataRef.child('tag_info/' + tag_name).on('value', function (snapshot) {
+	generateTitleAndNavigationLink(snapshot);
+	generateDefinition(snapshot);
+	generateUsage(snapshot);
+	generateAttributeList(snapshot);
+	generateExample(snapshot);
+	generateBrowserSupportList(snapshot);
+	generateDefaultCss(snapshot);
+});
+
+</script>
 
 </body>
 </html>

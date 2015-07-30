@@ -1,5 +1,6 @@
 {
     "form": {
+	"category":"list_table_and_form_tags",
         "definition": "This element indicates a media object to include in an HTML document. Usually, the object is a graphic image, but some implementations support movies and animations.",
         "usage": [
             "&lt;form",
@@ -19,44 +20,44 @@
         "specification_of_attributes": {
             "accept": [
                 "file_type",
-                "(NotsupportedinHTML5)Specifiesacomma-separatedlistoffiletypesthattheserveraccepts(thatcanbesubmittedthroughthefileupload)"
+                "(NotsupportedinHTML5)Specifies a comma-separated list of file types that the server accepts (that can be submitted through the file upload)"
             ],
             "accept-charset": [
                 "character_set",
-                "Specifiesthecharacterencodingsthataretobeusedfortheformsubmission"
+                "Specifies the character encodings that are to be used for the form submission"
             ],
             "action": [
                 "URL",
-                "Specifieswheretosendtheform-datawhenaformissubmitted"
+                "Specifies where to send the form-data when a form is submitted"
             ],
             "enctype": [
-                "application,multiparttext",
-                "Specifieshowtheform-datashouldbeencodedwhensubmittingittotheserver(onlyformethod=\"post\")"
+                "application,multipart text",
+                "Specifie show the form-data should be encoded when submitting it to the server(only for method=\"post\")"
             ],
             "method": [
                 "get,post",
-                "SpecifiestheHTTPmethodtousewhensendingform-data"
+                "Specifies the HTTP method to use when sending form-data"
             ],
             "name": [
                 "text",
-                "Specifiesthenameofaform"
+                "Specifies the name of a form"
             ],
             "novalidate": [
                 "novalidate",
-                "Specifiesthattheformshouldnotbevalidatedwhensubmitted"
+                "Specifies that the form should not be validated when submitted"
             ],
             "target": [
                 "_blank,_self,_parent,_top",
-                "Specifieswheretodisplaytheresponsethatisreceivedaftersubmittingtheform"
+                "Specifies where to display the response that is received after submitting the form"
             ]
         },
         "example": [
-            "&gt;form&lt;",
-            "action=http: //www.bigcompany.com/cgi-bin/processit.exe",
-            "method=POSTname=testformonsubmit=validate()",
-            "Enteryourcommentshere: &lt;br&gt;",
-            "&lt;textareaname=\"comments\"cols=\"30\"rows=\"8\"&gt;&lt;/textarea&gt;&lt;br&gt;",
-            "&lt;inputtype=\"submit\"&gt; &lt;inputtype=\"reset\"&gt;&lt;/form&gt;"
+            "&lt;form&gt;",
+            "action=\"http: //www.bigcompany.com/cgi-bin/processit.exe\"",
+            "method=\"POST\" name=\"test form\" onsubmit=\"validate()\"",
+            "Enter your comments here: &lt;br&gt;",
+            "&lt;textarea name=\"comments\" cols=\"30\" rows=\"8\" &gt;&lt;/textarea&gt;&lt;br&gt;",
+            "&lt;input type=\"submit\"&gt; &lt;input type=\"reset\"&gt;&lt;/form&gt;"
         ],
         "browser_support": [
             "Yes",
@@ -65,7 +66,7 @@
             "Yes",
             "Yes"
         ],
-        "defult_css": [
+        "default_css": [
             "form{",
             "display: block;",
             "margin-top: 0em;",

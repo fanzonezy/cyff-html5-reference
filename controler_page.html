@@ -6,9 +6,16 @@
 	<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
 	<script>var dataRef = new Firebase("https://html5-cyff.firebaseio.com");</script>
 	<script type = 'text/javascript'></script>
+	<style>
+		.input_box {font-size: 16px}
+		.output_box {overflow-y: scroll}
+	</style>
 	</head>
 
+
+
 	<body>
+		<!--
 		<div id = "add_op">
 			<label>File Path:</label><br>
 			<textarea id = "add_path"    rows = 1 cols = 200></textarea><br>
@@ -17,17 +24,165 @@
 			<br>
 			<button id = "add_submit" type = "button">submit</button>
 		</div>
+		-->
+		
+		<div id = "add_op">
+			<label>saving path:</label><br>
+			<p>Add the name of the tag at the end of the "saving path", otherwise you will <br>
+			   remove all the existing contents under tag_info</p>
+            <textarea class = "input_box" id = "add_path"         rows = 1 cols = 100>data/tag_info/</textarea><br>
+			<br>
+
+			<label>tag name:</label><br>
+			<p>Enter a tag name </p>
+            <textarea class = "input_box" id = "add_tag_name"     rows = 1 cols = 100></textarea><br>
+			<br>
+
+            <label>category:</label><br>
+			<p>Enter a category name. A category name MUST be one of those strings:<br>
+			   "structure_tags", "text_tags", "scripts", "meta_information_tags", <br>
+			   "list_table_and_form_tags", "links", "image_and_object_tags"</p>
+            <textarea class = "input_box" id = "add_category"     rows = 1 cols = 100></textarea><br>
+			<br>
+
+			<label>definition:</label><br>
+			<p>Enter a definition string.</p>
+            <textarea class = "input_box" id = "add_definition"   rows = 5 cols = 100></textarea><br>
+			<br>
+
+			<label>usage:</label><br>
+			<p>Enter a usage sting with proper format</p>
+            <textarea class = "input_box" id = "add_usage"        rows = 15 cols = 100></textarea><br>
+			<br>
+
+			<label>specification of attribute:</label><br>
+			<p>Enter attributes list:<br> 
+			   (1) each line represents an attribute item.</br>
+			   (2) a line is formatted as: attr name; possible_val1, possible_val2, ... possible_valn; spec<br>
+			   (3) check your input CAREFULLY.<br></p>  
+            <textarea class = "input_box" id = "add_spec_of_attr" rows = 15 cols = 100></textarea><br>
+			<br>
+
+			<label>example:</label><br>
+			<p>Enter a example sting with proper format</p>
+            <textarea class = "input_box" id = "add_example"      rows = 15 cols = 100></textarea><br>
+			<br>
+
+			<label>browser support:</label><br>
+			<p>Enter support information items seperated by ";": <br>
+			   info1; info2; ....; infon</p>
+            <textarea class = "input_box" id = "add_browser_sup"  rows = 1 cols = 100></textarea><br>
+			<br>
+
+			<label>default css:</label><br>
+			<p>Enter a default css sting with proper format</p>
+            <textarea class = "input_box" id = "add_default_css"  rows = 10 cols = 100></textarea><br>
+			<br>
+
+	        <label>generated JSON:</label><br>
+			<p>DO validate your JSON string using online JSON validator</p>
+            <textarea class = "output_box" id = "add_output_json"  rows = 10 cols = 100 readonly></textarea><br>
+
+			<button id = "add_create_json" type = "button">create JSON</button>
+            <button id = "add_submit" type = "button">submit</button>
+
+			<p>Check the data on firebase after submit. Then check corresponding generated pages. Those pages <br>
+			   should look like &lt;form&gt; tag and &lt;img&gt; tag.</p>
+			<p>If you are not sure the consequence of your option, CONFIRM WITH ME BEFORE YOU DO IT.</p>
+		</div>
 
 		<script>
-			function test(id1, id2) {
-            	alert('test');
-            	alert(id1 + " " + id2);
-        	}
+			/**
+			 * This function will replace all the illegal characters in a JSON string 
+			 */
+			function preprocess(input_string){
+				input_string = input_string.trim();  // eliminate white space at the beginning or end of the string
+				input_string = input_string.replace(/\"/g, "\\\"").replace(/</g, "&lt;").replace(/>/g, "&gt"); 
+				  
+				//input_string = input_string.replace(/\\\g, "\\\\");
+				//input_string = input_string.replace(/\/\g, "\\\/");
+				return input_string;
+			}
 
-			function addFromInput(pathareaId, textareaId){ 
+			function createJsonString(){
+				jsonString = "";
+				
+				// add category key-value pair
+				jsonString += "\"category\":" + "\"" + preprocess(document.getElementById('add_category').value) + "\",";
+
+				// add definition  
+				jsonString += "\"definition\":" + "\"" + preprocess(document.getElementById('add_definition').value) + "\",";
+
+				// add usage
+				var lines = document.getElementById('add_usage').value.split("\n");
+				var temp = "";
+				for (var i = 0; i < lines.length;  i++){
+					if (i != lines.length-1){
+						temp += "\"" + preprocess(lines[i]) + "\",";
+					}else{
+						temp += "\"" + preprocess(lines[i]) + "\"";
+					}
+				}
+				jsonString += "\"usage\":[" + temp + "],";
+
+				// add specification of attribute
+				var lines = document.getElementById('add_spec_of_attr').value.split("\n");
+				var temp = "";
+				
+				for (var i = 0; i < lines.length; i++){
+					var cells = lines[i].split(";");
+			temp += "\"" + preprocess(cells[0]) + "\":" + "[" + "\"" + preprocess(cells[1]) + "\"," + "\"" + preprocess(cells[2]) + "\"" + "]";
+					if (i != lines.length-1){
+						temp += ",";
+					}
+				}
+				jsonString += "\"specification_of_attributes\":" + "{" + temp + "},";
+
+				// add example
+				var lines = document.getElementById('add_example').value.split("\n");
+                var temp = "";
+                for (var i = 0; i < lines.length;  i++){
+                    if (i != lines.length-1){
+                        temp += "\"" + preprocess(lines[i]) + "\",";
+                    }else{
+                        temp += "\"" + preprocess(lines[i]) + "\"";
+                    }
+                }
+                jsonString += "\"example\":[" + temp + "],";
+
+				// add browser support
+				var cells = document.getElementById('add_browser_sup').value.split(";");
+				var temp = ""; 
+				for (var i = 0; i < cells.length; i++){
+					temp += "\"" + preprocess(cells[i]) + "\"";
+					if (i != cells.length-1) temp += ",";
+				}
+				jsonString += "\"browser_support\":[" + temp + "],";
+
+				// add default css
+				var lines = document.getElementById('add_default_css').value.split("\n");
+                var temp = "";
+                for (var i = 0; i < lines.length;  i++){
+                    if (i != lines.length-1){
+                        temp += "\"" + preprocess(lines[i]) + "\",";
+                    }else{
+                        temp += "\"" + preprocess(lines[i]) + "\"";
+                    }
+                }
+                jsonString += "\"default_css\":[" + temp + "]";
+
+
+				// wrap 
+				var tag_name = document.getElementById('add_tag_name').value;
+				jsonString =  "{" + jsonString + "}";
+				
+				return jsonString; 
+			}
+
+			function addFromInput(pathareaId, inputText){ 
 				
             	var inputPath = document.getElementById(pathareaId).value; // get path
-            	var inputText = document.getElementById(textareaId).value; // get input json string
+            	//var inputText = document.getElementById(textareaId).value; // get input json string
             	var jsonObj = JSON.parse(inputText);
             
             	alert('json parsing sucessful.');
@@ -44,13 +199,13 @@
                 	if (addPos){
 						onComplete = function(error){
                             if (error){
-                                alert('failed');
+                                alert('failed\n' + 'ERROR MESSAGE:' + error);
                             }else{
                                 alert('successful');
                             }
                         }
 						alert('about to add');
-                    	addPos.set(jsonObj, onComplete);
+                    	addPos.update(jsonObj, onComplete);
                     	alert('finished');
                 	}
                 	else{
@@ -59,14 +214,23 @@
 
             	}else{
                 	alert('add at root');
-                	dataRef.set(jsonObj);
+                	dataRef.update(jsonObj);
                 	alert('finished');
             	}
         	}
 
+			alert('binding start');			
+			// bind event listener
 			document.getElementById('add_submit').addEventListener('click', function() {
-				addFromInput("add_path", "add_content");
+				addFromInput("add_path", createJsonString());
 			});
+
+			document.getElementById('add_create_json').addEventListener('click', function() {
+                var json = createJsonString();
+				//alert(json);
+				document.getElementById('add_output_json').innerHTML = json; 
+            });
+			alert('binding finished');
 		</script>
 	</body>
 

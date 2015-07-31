@@ -4,11 +4,11 @@
 	<title>controler panel</title>
 	<meta charset = "utf-8">
 	<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
-	<script>var dataRef = new Firebase("https://html5-cyff.firebaseio.com");</script>
+	<script>var dataRef = new Firebase("https://html5-cyff.firebaseio.com/");</script>
 	<script type = 'text/javascript'></script>
 	<style>
 		.input_box {font-size: 16px}
-		.output_box {overflow-y: scroll}
+		.output_box {font-size: 16px; overflow-y: scroll}
 	</style>
 	</head>
 
@@ -91,6 +91,15 @@
 			<p>If you are not sure the consequence of your option, CONFIRM WITH ME BEFORE YOU DO IT.</p>
 		</div>
 
+		<hr />
+
+		<div id = "delete_op">
+			<label>Enter the tag name you want to delete:</label><br>
+			<textarea class = "input_box" id = "delete_tag_name"  rows = 1 cols = 100></textarea><br>
+			<button id = "delete_confirm" type = "button">delete</button>
+            <br>
+		</div>
+
 		<script>
 			/**
 			 * This function will replace all the illegal characters in a JSON string 
@@ -104,6 +113,9 @@
 				return input_string;
 			}
 
+			/*
+			 * This function will create a json string from the input information of a tag
+			 */
 			function createJsonString(){
 				jsonString = "";
 				
@@ -179,6 +191,9 @@
 				return jsonString; 
 			}
 
+			/*
+			 * This function upload a tag to firebase server
+			 */
 			function addFromInput(pathareaId, inputText){ 
 				
             	var inputPath = document.getElementById(pathareaId).value; // get path
@@ -219,6 +234,21 @@
             	}
         	}
 
+
+			/*
+			 * This function will delete a tag from firebase server
+			 */
+			function deleteFromFirebase(tag_name){
+				var tagRef = dataRef.child('data/tag_info/' + tag_name.trim());
+				if (tagRef){
+					alert("INFO: do you want to delete " + tagRef.key());
+					tagRef.remove();
+					alert('INFO: delete successfully');
+				}else{
+					alert('ERROR: try to delete an unexisting tag');	
+				}
+			} 
+
 			alert('binding start');			
 			// bind event listener
 			document.getElementById('add_submit').addEventListener('click', function() {
@@ -227,8 +257,13 @@
 
 			document.getElementById('add_create_json').addEventListener('click', function() {
                 var json = createJsonString();
-				//alert(json);
 				document.getElementById('add_output_json').innerHTML = json; 
+            });
+
+			document.getElementById('delete_confirm').addEventListener('click', function() {
+                var tag_name = document.getElementById('delete_tag_name').value;
+				alert(tag_name);
+				deleteFromFirebase(tag_name);
             });
 			alert('binding finished');
 		</script>

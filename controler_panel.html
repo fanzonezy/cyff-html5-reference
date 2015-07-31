@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HTML Guide</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="./styles/common.css" media = "screen" />
+<link rel="stylesheet" type="text/css" href="./styles/left_nav.css" media = "screen" />
+<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+<script>var dataRef = new Firebase("https://html5-cyff.firebaseio.com/");</script>
+
+<style>
+	.input_box {font-size: 16px; width: 100%}
+	.output_box {font-size: 16px; overflow-y: scroll; width: 100%}
+</style>
+</head>
+
+<body>
+
+
+<div id = "logo">
+<div id = "nav_bar">
+<table class = "container_tb" id = "nav_bar_container" >
+	<tr>
+	<td>
+	<div id='nav_menu'>
+	<ul>
+		<li><a class='active' href='./index.html'><span>Home</span></a></li>
+		<li><a href='./tutorial.html'><span>HTML Tutorial</span></a></li>
+		<li><a href='./reference_main.html'><span>References</span></a></li>
+		<li><a href='./site_map.html'><span>Site Map</span></a></li>
+		<li><a href='./about_us.html'><span>About Us</span></a></li>
+	</ul>
+	</div>
+	</td>
+	<td>
+		<form action = "./form.html">
+		<input id = "nav_search_box"  type = "text" value = " Search here ...">
+		</form>
+	</td>
+	</tr>
+</table>
+</div> <!--End of nav_bar-->
+	
+<h2>CYFF</h2>
+<h1 style = "text-align:center">HTML Guide</h1>
+<br>
+</div> <!---End of logo-->
+
+<table id = "nav_main_container" class = "container_tb">
+<tr>
+<td id = "left">
+	<div id='cssmenu'>
+	<ul>
+		<li><a class = "active" href='./index.html'><span>Home</span></a></li>
+		<li><a href='./tutorial.html'><span>Tutorials</span></a></li>
+		<li class='has-sub'><a href='reference_main.html'><span>References</span></a>
+			<ul>
+				<li><a href='./reference_nav.html?category_name=structure_tags'><span>Structure Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=meta_information_tags'><span>Meta Information Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=text_tags'><span>Text Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=links'><span>Links</span></a></li>
+				<li><a href='./reference_nav.html?category_name=image_and_object_tags'><span>Image and Object Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=list_table_and_form_tags'><span>List, Table and Form Tags</span></a></li>
+				<li><a href='./reference_nav.html?category_name=scripts'><span>Scripts</span></a></li>
+			</ul>
+		</li>
+		<li><a href='./site_map.html'><span>Site Map</span></a></li>
+		<li><a href='./about_us.html'><span>About Us</span></a></li>
+	</ul>
+	</div>
+</td>
+
+<td id = "right">
+
+<div id = "navigation_links">
+	<a href = "./index.html">Home>></a>
+	<a href = "#">controler panel</a>
+</div>
+
+<div id = "main_content">
+	<h1 style = "text-align:center"> Back End Control Panel</h1>
+	<hr style = "width: 750px" >
+	<div id = "add_op">
+	<label>saving path:</label><br>
+	<p>Add the name of the tag at the end of the "saving path", otherwise you will <br>
+	remove all the existing contents under tag_info</p>
+        <textarea class = "input_box" id = "add_path"         rows = 1 >data/tag_info/</textarea><br>
+	<br>
+
+	<label>tag name:</label><br>
+	<p>Enter a tag name </p>
+        <textarea class = "input_box" id = "add_tag_name"     rows = 1 ></textarea><br>
+	<br>
+
+        <label>category:</label><br>
+	<p>Enter a category name. A category name MUST be one of those strings:<br>
+	"structure_tags", "text_tags", "scripts", "meta_information_tags", <br>
+	"list_table_and_form_tags", "links", "image_and_object_tags"</p>
+        <textarea class = "input_box" id = "add_category"     rows = 1 ></textarea><br>
+	<br>
+
+	<label>definition:</label><br>
+	<p>Enter a definition string.</p>
+        <textarea class = "input_box" id = "add_definition"   rows = 5 ></textarea><br>
+	<br>
+
+	<label>usage:</label><br>
+	<p>Enter a usage sting with proper format</p>
+        <textarea class = "input_box" id = "add_usage"        rows = 15 ></textarea><br>
+	<br>
+
+	<label>specification of attribute:</label><br>
+	<p>Enter attributes list:<br>
+	(1) each line represents an attribute item.</br>
+	(2) a line is formatted as: attr name; possible_val1, possible_val2, ... possible_valn; spec<br>
+	(3) check your input CAREFULLY.<br></p>  
+        <textarea class = "input_box" id = "add_spec_of_attr" rows = 15 ></textarea><br>
+	<br>
+
+	<label>example:</label><br>
+	<p>Enter a example sting with proper format</p>
+        <textarea class = "input_box" id = "add_example"      rows = 15 ></textarea><br>
+	<br>
+
+	<label>browser support:</label><br>
+	<p>Enter support information items seperated by ";": <br>
+	info1; info2; ....; infon</p>
+        <textarea class = "input_box" id = "add_browser_sup"  rows = 1 ></textarea><br>
+	<br>
+
+	<label>default css:</label><br>
+	<p>Enter a default css sting with proper format</p>
+        <textarea class = "input_box" id = "add_default_css"  rows = 10 ></textarea><br>
+	<br>
+
+	<label>generated JSON:</label><br>
+	<p>DO validate your JSON string using online JSON validator</p>
+        <textarea class = "output_box" id = "add_output_json"  rows = 10 readonly></textarea><br>
+
+	<button id = "add_create_json" type = "button">create JSON</button>
+        <button id = "add_submit" type = "button">submit</button>
+
+	<p>Check the data on firebase after submit. Then check corresponding generated pages. Those pages <br>
+	should look like &lt;form&gt; tag and &lt;img&gt; tag.</p>
+	<p>If you are not sure the consequence of your option, CONFIRM WITH ME BEFORE YOU DO IT.</p>
+	</div>  <!--End of add operation area-->
+
+	<hr />
+
+	<div id = "delete_op">
+	<label>Enter the tag name you want to delete:</label><br>
+	<textarea class = "input_box" id = "delete_tag_name"  rows = 1 ></textarea><br>
+	<button id = "delete_confirm" type = "button">delete</button>
+        <br>
+	</div>  <!-- End of delete operation-->
+</div>
+
+<script src="./scripts/controler_panel.js"></script>
+
+<div id = "nav_area">
+</div>
+
+<div id = "footer">
+<footer>
+<hr>
+<p>Copy Right 2015, Team CYFF, All Rights Reserved</p>
+</footer>
+</div>
+
+</td>
+</tr>
+</table>
+
+</body>
+</html>

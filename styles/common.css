@@ -118,37 +118,37 @@ html, body {
 }
 
 #navigation_links{
-	width: 750px; 
+	width: 80%; 
 	margin-left: auto; 
 	margin-right: auto
 }
 
 #main_content{
-	width: 750px; 
+	width: 80%; 
 	margin-left: auto; 
 	margin-right: auto
 }
 
 #footer{
-	width: 750px; 
+	width: 80%; 
 	margin-left: auto; 
 	margin-right: auto;
 }
 
 #nav_area{
-	width: 750px; 
+	width: 100%; 
 	margin-left: auto; 
 	margin-right: auto;
 }
 
 .text_block{
 	border: 1px solid black; 
-	width: 714px; 
-	padding: 18px
+	width: 94%; 
+	padding: 3%;	
 } 
 .table_block{
 	border: 1px solid black; 
-	width: 750px
+	width: 100%
 }
 .stext{
 	border: 1px solid black;

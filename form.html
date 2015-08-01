@@ -10,23 +10,25 @@
     var dataRef = new Firebase("https://html5-cyff.firebaseio.com/data"); // create data base reference at loading time
 </script>
 <style>
+p.linebreakwraper {width: 100%}
 
 #usage_text {overflow-x: scroll }
 #example_text {overflow-x: scroll}
 #default_css_text {overflow-x: scroll}
 
-#attr_list           {}
-#attr_list  tr > td:nth-child(1) {width: 15%}
-#attr_list  tr > td:nth-child(2) {width: 15%}
-#attr_list  tr > td:nth-child(3) {width: 70%}
+#attr_list           {width: 100%; table-layout: fixed}
+#attr_list tr td:first-child  {width: 15%; word-wrap: break-word;overflow-wrap: break-word;}
+#attr_list tr td:nth-child(2) {width: 15%; word-wrap: break-word;overflow-wrap: break-word;}
+#attr_list tr td:last-child   {width: 70%; word-wrap: break-word;overflow-wrap: break-word;}
+#attr_list tr td p {width: 90%}
 
-#browser_sup_list    {}
-#browser_sup_list  tr > td:first-child  {width: 150px; font-size: 16px}
-#browser_sup_list  tr > td:nth-child(2) {width: 120px}
-#browser_sup_list  tr > td:nth-child(3) {width: 120px}
-#browser_sup_list  tr > td:nth-child(4) {width: 120px}
-#browser_sup_list  tr > td:nth-child(5) {width: 120px}
-#browser_sup_list  tr > td:nth-child(6) {width: 120px}
+#browser_sup_list    {width: 100%}
+#browser_sup_list  tr  td:first-child  {width: 20%; font-size: 16px}
+#browser_sup_list  tr  td:nth-child(2) {width: 16%}
+#browser_sup_list  tr  td:nth-child(3) {width: 16%}
+#browser_sup_list  tr  td:nth-child(4) {width: 16%}
+#browser_sup_list  tr  td:nth-child(5) {width: 16%}
+#browser_sup_list  tr  td:nth-child(6) {width: 16%}
 
 </style>
 </head>
@@ -93,7 +95,7 @@
 	<a href = "#" id = "last_level_link"></a>    <!--These two links will be rendered at loading time--> 
 	<a href = "#" id = "curr_level_link"></a>
 	<h1 style = "text-align:center" id = "page_title"></h1>           <!--The title of this pahe will be rendered at loading time-->
-	<hr style = "width: 750px" >
+	<hr style>
 </div>
 
 <div id = "main_content">
@@ -116,7 +118,14 @@
 					<td class = "stext"><b> Attribute </b></td>
 					<td class = "stext"><b> Value </b></td>
 					<td class = "stext"><b> Specification </b></td>
-				</tr>	
+				</tr>
+				<!--
+				<tr>
+					<td class = "stext">example</td>
+					<td class = "stext">example</td>
+					<td class = "ltext">example</td>
+				</tr>
+				-->	
 			</table>
 		</div>
 	</section>
@@ -234,10 +243,10 @@ function generateAttributeList (snapshot) {
 		attr_name.className  = 'stext';
 		attr_value.className = 'stext';
 		attr_spec.className  = 'ltext';
-
+		
 		// set text
-		attr_name.innerHTML  = list_item.key();
-		attr_value.innerHTML = (list_item.val())['0'];
+		attr_name.innerHTML = '<p>' + list_item.key() + '</p>';
+		attr_value.innerHTML = '<p>' + (list_item.val())['0'] + '</p>';
 		attr_spec.innerHTML  = '<p>' + (list_item.val())['1'] + '</p>';
 
 		// add to list row
@@ -309,7 +318,7 @@ function generateDefaultCss (snapshot) {
 }
 
 var tag_name = parseValue('tag_name');
-dataRef.child('tag_info/' + tag_name).on('value', function (snapshot) {
+dataRef.child('tag_info/' + tag_name).once('value', function (snapshot) {
 	generateTitleAndNavigationLink(snapshot);
 	generateDefinition(snapshot);
 	generateUsage(snapshot);

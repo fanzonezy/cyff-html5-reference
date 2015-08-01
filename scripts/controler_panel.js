@@ -2,8 +2,9 @@
  * This function will replace all the illegal characters in a JSON string 
  */
 function preprocess(input_string){
+		//alert(input_string);
 		input_string = input_string.trim();  // eliminate white space at the beginning or end of the string
-		input_string = input_string.replace(/\"/g, "\\\"").replace(/</g, "&lt;").replace(/>/g, "&gt"); 
+		input_string = input_string.replace(/\"/g, "\\\"").replace(/</g, "&lt;").replace(/>/g, "&gt;"); 
 
 		//input_string = input_string.replace(/\\\g, "\\\\");
 		//input_string = input_string.replace(/\/\g, "\\\/");
@@ -50,6 +51,7 @@ function createJsonString(){
 		// add example
 		var lines = document.getElementById('add_example').value.split("\n");
 		var temp = "";
+	
 		for (var i = 0; i < lines.length;  i++){
 				if (i != lines.length-1){
 						temp += "\"" + preprocess(lines[i]) + "\",";
@@ -91,9 +93,9 @@ function createJsonString(){
 /*
  * This function upload a tag to firebase server
  */
-function addFromInput(pathareaId, inputText){ 
+function addFromInput(inputPath,  inputText){ 
 
-		var inputPath = document.getElementById(pathareaId).value; // get path
+		//var inputPath = document.getElementById(pathareaId).value; // get path
 		//var inputText = document.getElementById(textareaId).value; // get input json string
 		var jsonObj = JSON.parse(inputText);
 
@@ -104,8 +106,8 @@ function addFromInput(pathareaId, inputText){
 
 				if (dataRef){
 						if (inputPath == 'data/tag_info/'){
-							alert("Please input your tag name.");
-							return;
+								alert("Please input your tag name.");
+								return;
 						}
 						var addPos = dataRef.child(inputPath);
 				}else{
@@ -141,23 +143,96 @@ function addFromInput(pathareaId, inputText){
  */
 function deleteFromFirebase(tag_name){
 		var tagRef = dataRef.child('data/tag_info/' + tag_name.trim());
-		if (tagRef.val()){
+		tagRef.once('value', function (snapshot){
+			if (snapshot.exists()){
 				alert("INFO: do you want to delete " + tagRef.key());
 				tagRef.remove();
 				alert('INFO: delete successfully');
-		}else{
+			}else{
 				alert('ERROR: try to delete an unexisting tag');	
-		}
+			}
+		});
 } 
 
-function retrieveData(tag_name){
+/**
+ * retrieve tag information from fire base 
+ */
+function retrieveAndDisplayData(tag_name){
+	var tagRef = dataRef.child('data/tag_info/' + tag_name.trim());
+	tagRef.once('value', function (snapshot){
+		
+		// retrieve path
+		document.getElementById('add_path').value = "data/tag_info/" + tag_name;
 
+		// retrieve tag name
+		document.getElementById('add_tag_name').value = tag_name;
+
+		// retrieve category
+		document.getElementById('add_category').value = snapshot.child("category").val(); 
+
+		// retrieve definition
+		document.getElementById('add_definition').value = snapshot.child("definition").val();
+
+		// retrieve usage: REMEMBER TO ELIMINATE LAST CHARATER 
+		var temp = '';
+		snapshot.child('usage').forEach(function(line){
+			temp += line.val() + '\n';
+		});
+		temp = temp.trim();
+		document.getElementById('add_usage').value = temp;
+
+		// retrieve attribute list: REMEMBER TO ELIMINATE LAST CHARATER
+		var temp = '';
+		snapshot.child("specification_of_attributes").forEach(function(attr){
+			temp += attr.key() + ';';
+			temp += (attr.val())['0'] + ';' + (attr.val())['1'] + '\n';
+		});
+		temp = temp.trim();
+		document.getElementById('add_spec_of_attr').value = temp;
+
+		// retrieve example: REMEMBER TO ELIMINATE LAST CHARATER
+		var temp = '';
+        snapshot.child('example').forEach(function(line){
+            temp += line.val() + '\n';
+        });
+		temp = temp.trim();
+		document.getElementById('add_example').value = temp;
+
+		// retrieve browser support
+		var temp = '';
+		 snapshot.child('browser_support').forEach(function(item){
+            temp += item.val() + ';';
+        });
+ 		temp = temp.slice(0, temp.length-1);
+		document.getElementById('add_browser_sup').value = temp;
+
+		// retrieve default css
+		var temp = '';
+		snapshot.child('default_css').forEach(function(line){
+            temp += line.val() + '\n';
+        });
+		document.getElementById('add_default_css').value = temp;
+	});
 }
 
-alert('initializing...');			
+function clearAll(){
+	document.getElementById('add_path').value = "data/tag_info/";
+	//document.getElementById('add_tag_name').value = "";
+	document.getElementById('add_category').value = "";
+	document.getElementById('add_definition').value = "";
+	document.getElementById('add_usage').value = "";
+	document.getElementById('add_spec_of_attr').value = "";
+	document.getElementById('add_example').value = "";
+	document.getElementById('add_browser_sup').value = "";
+	document.getElementById('add_default_css').value = "";
+}
+
+alert('initializing...');
+//alert('\n'.length);			
 // bind event listener
 document.getElementById('add_submit').addEventListener('click', function() {
-				addFromInput("add_path", createJsonString());
+				var path = document.getElementById('add_path').value;
+				addFromInput(path, createJsonString());
 				});
 
 document.getElementById('add_create_json').addEventListener('click', function() {
@@ -167,7 +242,17 @@ document.getElementById('add_create_json').addEventListener('click', function() 
 
 document.getElementById('delete_confirm').addEventListener('click', function() {
 				var tag_name = document.getElementById('delete_tag_name').value;
-				alert(tag_name);
+				//alert(tag_name);
 				deleteFromFirebase(tag_name);
 				});
+
+document.getElementById('add_retrieve').addEventListener('click', function(){
+				var tag_name = document.getElementById('add_tag_name').value;
+				retrieveAndDisplayData(tag_name); 
+});
+
+document.getElementById('add_clear_all').addEventListener('click', clearAll);
+
+
+
 alert('initialization finished');

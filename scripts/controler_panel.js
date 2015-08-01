@@ -141,7 +141,7 @@ function addFromInput(pathareaId, inputText){
  */
 function deleteFromFirebase(tag_name){
 		var tagRef = dataRef.child('data/tag_info/' + tag_name.trim());
-		if (tagRef){
+		if (tagRef.val()){
 				alert("INFO: do you want to delete " + tagRef.key());
 				tagRef.remove();
 				alert('INFO: delete successfully');
@@ -149,6 +149,10 @@ function deleteFromFirebase(tag_name){
 				alert('ERROR: try to delete an unexisting tag');	
 		}
 } 
+
+function retrieveData(tag_name){
+
+}
 
 alert('initializing...');			
 // bind event listener

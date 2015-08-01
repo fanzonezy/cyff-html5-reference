@@ -1,0 +1,49 @@
+In order to generate tag pages and tag list pages automatically, I have two data structure. One is for tag list, the other is for tag page.
+
+The first data structure is nav_info. It's organized by tags' categories:
+
+nav_info
+ |_______category1
+ |__ ...   |________tag1 : { "brief definition"}
+		   |__ ...
+
+
+The second data structure is tag_info. 
+Tag_info
+ |_______tag1:{ 
+ |__ ...		category: "...",
+				definition: "...",
+				usage:["line1", "line2", ...],
+				spec_of_attr:{
+								attr1:['value', 'sepcificatoin'],
+								...
+							  },
+				example:["line1", "line2", ...],
+				brower_support:[ "Yes/No", ...],
+				default_css["line1", "line2", ...]
+			  }
+
+you can see that we have used some techniques to prereserve the original format of text. Like, in 'usage','example' and 'default_css', we break original string into several lines to preserve the formats of them. Why not just use original string, you will see the reason.
+
+
+We've put a lot of effort to write a good backend interface which is a html file named "controler_panel".
+
+The interface is in the 'pages' directory and is local. you'll see the structure of controler panel of roughly like our tag pag. When you upload a tag, you just have to fill those text area's and click "create json", we program will generate a json string for you. Then you click "submit", that json string will be parsed into a json object and then uploaded to firebase serve. 
+
+In order to make our json generating program work, you have to follow some input formats which is give on that page.
+
+We'va also designed a good edit function. When you want to modify a tag, click "retrieve". If that tag exists in firebase server, it's content will be automatically filled into those text areas. Then, you can do some modification and then click "create json", and then "submit". We think this is a good way to implement "EDIT" function.
+
+Here you can see, if we allow '\t', '\n' and etc. charater's in data, it will bring a great difficulty to writing a relatively robust json generating program. That is why we have used a trick to preserve format.
+
+As I have mentioed above, our tag list page, which is "referenve_nav.html" and tag pag, which is "form.html" are just to template, all their content will be filled automatically. 
+
+All the static asset is under pages, and they are will organized by serveral directory.
+
+Our app is deployed at https://html5-cyff.firebaseapp.com/
+
+If you have some question of this project, or you can't file a certain required file, please contact me: zhfan@ucsd.edu.
+
+Thank you. :) 
+
+

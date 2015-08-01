@@ -27,8 +27,9 @@
 					</div>
 				</td>
 				<td>
-					<form action = "./form.html">
-						<input id = "nav_search_box"    type = "text" value = " Search here ...">
+					<form id="nav_form">
+						<input id = "nav_search_box" type = "text" value = "Click GO to search">
+						<input type="button" value="GO" style="background:#1f1f20;color:white; border:hidden"  onclick = "updateSearchTerm();">
 					</form>
 				</td>
 			</tr>
@@ -88,32 +89,140 @@
 	</div>
 	<div id = "nav_by_alph">
 		<h2>Sort By Alphabet</h2>
-		<a href = "">a</a>
-		<a href = "">b</a>
-		<a href = "">c</a>
-		<a href = "">d</a>
-		<a href = "">e</a>
-		<a href = "">f</a>
-		<a href = "">g</a>
-		<a href = "">h</a>
-		<a href = "">i</a>
-		<a href = "">j</a>
-		<a href = "">k</a>
-		<a href = "">l</a>
-		<a href = "">m</a>
-		<a href = "">n</a>
-		<a href = "">o</a>
-		<a href = "">p</a>
-		<a href = "">q</a>
-		<a href = "">r</a>
-		<a href = "">s</a>
-		<a href = "">t</a>
-		<a href = "">u</a>
-		<a href = "">v</a>
-		<a href = "">w</a>
-		<a href = "">x</a>
-		<a href = "">y</a>
-		<a href = "">z</a>		
+		<h3>Tags begin with 'a':</h3>
+		<a href = "./form.html?tag_name=a">a</a>
+		<a href = "./form.html?tag_name=abbr">abbr</a>
+		<a href = "./form.html?tag_name=acronym">acronym</a>
+		<a href = "./form.html?tag_name=address">address</a>
+		<a href = "./form.html?tag_name=area">area</a>
+
+		<h3>Tags begin with 'b':</h3>
+		<a href = "./form.html?tag_name=b">b</a>
+		<a href = "./form.html?tag_name=base">base</a>
+		<a href = "./form.html?tag_name=basefont">basefont</a>
+		<a href = "./form.html?tag_name=bdo">bdo</a>
+		<a href = "./form.html?tag_name=big">big</a>
+		<a href = "./form.html?tag_name=blockquote">blockquote</a>
+		<a href = "./form.html?tag_name=body">body</a>
+		<a href = "./form.html?tag_name=br">br</a>
+		<a href = "./form.html?tag_name=button">button</a>
+
+		<h3>Tags begin with 'c':</h3>
+		<a href = "./form.html?tag_name=caption">caption</a>
+		<a href = "./form.html?tag_name=center">center</a>
+		<a href = "./form.html?tag_name=cite">cite</a>
+		<a href = "./form.html?tag_name=code">code</a>
+		<a href = "./form.html?tag_name=col">col</a>
+		<a href = "./form.html?tag_name=colgroup">colgroup</a>
+		<a href = "./form.html?tag_name=comments">comments</a>
+
+		<h3>Tags begin with 'd':</h3>	
+		<a href = "./form.html?tag_name=dd">dd</a>
+		<a href = "./form.html?tag_name=del">del</a>
+		<a href = "./form.html?tag_name=dfn">dfn</a>
+		<a href = "./form.html?tag_name=dir">dir</a>
+		<a href = "./form.html?tag_name=div">div</a>
+		<a href = "./form.html?tag_name=dl">dl</a>
+		<a href = "./form.html?tag_name=dt">dt</a>
+
+		<h3>Tags begin with 'e':</h3>
+		<a href = "./form.html?tag_name=em">em</a>
+		<a href = "./form.html?tag_name=embed">embed</a>
+
+		<h3>Tags begin with 'f':</h3>
+		<a href = "./form.html?tag_name=fieldset">fieldset</a>
+		<a href = "./form.html?tag_name=form">form</a>
+		<a href = "./form.html?tag_name=frame">frame</a>
+		<a href = "./form.html?tag_name=frameset">frameset</a>
+
+		<h3>Tags begin with 'h':</h3>
+		<a href = "./form.html?tag_name=h1">h1</a>
+		<a href = "./form.html?tag_name=h2">h2</a>
+		<a href = "./form.html?tag_name=h3">h3</a>
+		<a href = "./form.html?tag_name=h4">h4</a>
+		<a href = "./form.html?tag_name=h5">h5</a>
+		<a href = "./form.html?tag_name=h6">h6</a>
+		<a href = "./form.html?tag_name=head">head</a>
+		<a href = "./form.html?tag_name=hr">hr</a>
+		<a href = "./form.html?tag_name=html">html</a>
+
+		<h3>Tags begin with 'i':</h3>
+		<a href = "./form.html?tag_name=i">i</a>
+		<a href = "./form.html?tag_name=iframe">iframe</a>
+		<a href = "./form.html?tag_name=ilayer">ilayer</a>
+		<a href = "./form.html?tag_name=img">img</a>
+		<a href = "./form.html?tag_name=input">input</a>
+		<a href = "./form.html?tag_name=ins">ins</a>
+
+		<h3>Tags begin with 'k':</h3>
+		<a href = "./form.html?tag_name=kbd">kbd</a>
+
+		<h3>Tags begin with 'l':</h3>
+		<a href = "./form.html?tag_name=label">label</a>
+		<a href = "./form.html?tag_name=legend">legend</a>
+ 		<a href = "./form.html?tag_name=li">li</a>
+ 		<a href = "./form.html?tag_name=link">link</a>
+
+		<h3>Tags begin with 'm':</h3>
+		<a href = "./form.html?tag_name=map">map</a>
+		<a href = "./form.html?tag_name=menu">menu</a>
+		<a href = "./form.html?tag_name=meta">meta</a>
+
+		<h3>Tags begin with 'n':</h3>
+		<a href = "./form.html?tag_name=noscript">noscript</a>
+
+		<h3>Tags begin with 'o':</h3>
+		<a href = "./form.html?tag_name=object">object</a>
+		<a href = "./form.html?tag_name=ol">ol</a>
+		<a href = "./form.html?tag_name=optgroup">optgroup</a>
+		<a href = "./form.html?tag_name=option">option</a>
+
+		<h3>Tags begin with 'p':</h3>
+		<a href = "./form.html?tag_name=p">p</a>
+		<a href = "./form.html?tag_name=param">param</a>
+		<a href = "./form.html?tag_name=pre">pre</a>
+		
+		<h3>Tags begin with 'q':</h3>
+		<a href = "./form.html?tag_nam=q">q</a>
+
+		<h3>Tags begin with 'r':</h3>
+		<a href = "./form.html?tag_name=rt">rt</a>
+		<a href = "./form.html?tag_name=ruby">ruby</a>
+
+		<h3>Tags begin with 's':</h3>
+		<a href = "./form.html?tag_name=s">s</a>
+		<a href = "./form.html?tag_name=samp">samp</a>
+		<a href = "./form.html?tag_name=script">script</a>
+		<a href = "./form.html?tag_name=select">select</a>
+		<a href = "./form.html?tag_name=small">small</a>
+		<a href = "./form.html?tag_name=span">span</a>
+		<a href = "./form.html?tag_name=strong">strong</a>
+		<a href = "./form.html?tag_name=style">style</a>
+		<a href = "./form.html?tag_name=sub">sub</a>
+		<a href = "./form.html?tag_name=sup">sup</a>
+
+		<h3>Tags begin with 't':</h3>
+		<a href = "./form.html?tag_name=table">table</a>
+ 		<a href = "./form.html?tag_name=tbody">tbody</a>
+ 		<a href = "./form.html?tag_name=td">td</a>
+ 		<a href = "./form.html?tag_name=textarea">textarea</a>
+ 		<a href = "./form.html?tag_name=tfoot">tfoot</a>
+ 		<a href = "./form.html?tag_name=th">th</a>
+ 		<a href = "./form.html?tag_name=thead">thead</a>
+ 		<a href = "./form.html?tag_name=title">title</a>
+ 		<a href = "./form.html?tag_name=tr">tr</a>
+ 		<a href = "./form.html?tag_name=tt">tt</a>
+
+		<h3>Tags begin with 'u':</h3>
+		<a href = "./form.html?tag_name=u">u</a>
+ 		<a href = "./form.html?tag_name=ul">ul</a>
+
+		<h3>Tags begin with 'v':</h3>
+		<a href = "./form.html?tag_name=var">var</a>
+
+		<h3>Tags begin with 'w':</h3>
+		<a href = "./form.html?tag_name=wbr">wbr</a>
+	
 	</div>
 </div>
 
@@ -128,5 +237,7 @@
 </td>
 </tr>
 </table>
+<script src="./scripts/search_bar_lib.js"></script>
+
 </body>
 </html>

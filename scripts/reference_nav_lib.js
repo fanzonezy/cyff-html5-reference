@@ -57,7 +57,7 @@ function generateTitleAndNavigationLink(category){
 var category = parseValue('category_name');
 
 generateTitleAndNavigationLink(category);
-dataRef.child('nav_info/' + category).on('value', function(snapshot){
+dataRef.child('nav_info/' + category).once('value', function(snapshot){
 	var parentList = document.getElementById('tag_list');
     snapshot.forEach(function (item){
 

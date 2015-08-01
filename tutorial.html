@@ -26,8 +26,9 @@
 					</div>
 				</td>
 				<td>
-					<form action = "./form.html">
-						<input id = "nav_search_box"    type = "text" value = " Search here ...">
+					<form id="nav_form">
+						<input id = "nav_search_box" type = "text" value = "Click GO to search">
+						<input type="button" value="GO" style="background:#1f1f20;color:white; border:hidden"  onclick = "updateSearchTerm();">
 					</form>
 				</td>
 			</tr>
@@ -78,7 +79,7 @@
 		<h4>Example: Creating a simple web page</h4>
 		<p>
 			1. Start Notepad. <br>
-			2.	Type in the following text
+			2. Type in the following text
 		</p>
 		<pre>&lt;html&gt;
 	&lt;head&gt;
@@ -104,16 +105,39 @@
 	
 	<div>
 		<h3>HTM or HTML Extension?</h3>
+		<p>When you save an HTML file, you can use either the .htm or the .html extension. We have used <strong>.html</strong> in our example.
 	</div>
 	
 	<div>
 		<h3>HTML Tags</h3>
+		<p>
+		1. HTML tags are used to mark-up HTML elements &lt;br&gt;<br>
+		2. HTML tags are surrounded by the two characters &lt; and &gt;<br>
+		3. The surrounding characters are called angle brackets<br>
+		4. HTML tags normally come in pairs like &lt;b&gt; and &lt;/b&gt;<br>
+		5. The first tag in a pair is the start tag, the second tag is the end tag<br>
+		6. The text between the start and end tags is the element content<br>
+       	7. HTML tags are not case sensitive, &lt;b&gt; means the same as &lt;B&gt;<br>
+		</p>
+	</div>
+
+	<div>
+		<h3>Use Lowercase Tags</h3>
+		<p>We have just said that HTML tags are not case sensitive: &lt;B&gt; means the same as &lt;b&gt;. It is recommended to always use because</p>
+		<p><strong>If you want to prepare yourself for the next generations of HTML, you should start using lowercase tags. The World Wide Web Consortium recommends lowercase tags in their HTML 4 recommendation, and XHTML (the next generation HTML) demands lowercase tags.</strong></p>
+		<p>Tags can have attributes. Attributes can provide additional information about the HTML elements on your page.
+		<p>This tag defines the body element of your HTML page: &lt;body&gt;. With an added bgcolor attribute, you can tell the browser that the background color of your page should be red, like this: &lt;body bgcolor="red"&gt;</p>
+		<p>Attributes always come in name/value pairs like this: name="value".</p>
+
+		<p>Attributes are always added to the start tag of an HTML element.</p>
 	</div>
 	
-	
-	
+	<div>
+		<h3>Quote Styles, "red" or 'red'?</h3>
+		<p>Attribute values should always be enclosed in quotes. Double style quotes are the most common, but single style quotes are also allowed. In some rare situations, like when the attribute value itself contains quotes, it is necessary to use single quotes:. </p>	
+	<div>
 </div>
-
+	<p>Now, you have got those basics to learn HTML. if you wamt to now more, please go to our <a style = "font-size: 30px" href = "./reference_main.html"><strong>reference</strong></a></p>
 <div id = "nav_area">
 </div>
 
@@ -127,6 +151,8 @@
 </td>
 </tr>
 </table>
+
+<script src="./scripts/search_bar_lib.js"></script>
 
 </body>
 </html>

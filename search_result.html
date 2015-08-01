@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
+<title>Rearch Result</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./styles/common.css" media = "screen" />
 <link rel="stylesheet" type="text/css" href="./styles/left_nav.css" media = "screen" />
-<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
-<script>
-	var dataRef = new Firebase("https://html5-cyff.firebaseio.com/data"); // create data base reference at loading time
-</script>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 <style>
 
-#tag_list	{width: 100%; table-layout: fixed}
-#tag_list tr td:first-child  {width: 30%; word-wrap: break-word; overflow: break-word}
-#tag_list tr td:nth_child(2) {width: 70%; word-wrap: break-word; overflow: break-word}
+
+#attr_list           {}
+#attr_list  tr > td:nth-child(1) {width: 15%}
+#attr_list  tr > td:nth-child(2) {width: 15%}
+#attr_list  tr > td:nth-child(3) {width: 70%}
+
+#browser_sup_list    {}
+#browser_sup_list  tr > td:first-child  {width: 150px; font-size: 16px}
+#browser_sup_list  tr > td:nth-child(2) {width: 120px}
+#browser_sup_list  tr > td:nth-child(3) {width: 120px}
+#browser_sup_list  tr > td:nth-child(4) {width: 120px}
+#browser_sup_list  tr > td:nth-child(5) {width: 120px}
+#browser_sup_list  tr > td:nth-child(6) {width: 120px}
 
 </style>
 </head>
 
 <body id = "whole_page">
-
-<noscript>Javascript is now unavaliable on your browser, and content can not be loaded. Please Check your Javascript setting</noscript>
 
 <div id = "logo">
 	<div id = "nav_bar">
@@ -42,6 +48,8 @@
 						<input id = "nav_search_box" type = "text" value = "Click GO to search">
 						<input type="button" value="GO" style="background:#1f1f20;color:white; border:hidden"  onclick = "updateSearchTerm();">
 					</form>
+
+
 				</td>
 			</tr>
 		</table>
@@ -56,7 +64,7 @@
 <td id = "left">
 	<div id='cssmenu'>
 	<ul>
-		<li><a href='./index.html'><span>Home</span></a></li>
+		<li><a  href='./index.html'><span>Home</span></a></li>
 		<li><a href='./tutorial.html'><span>Tutorials</span></a></li>
 		<li class='active has-sub'><a href='reference_main.html'><span>References</span></a>
 			<ul>
@@ -78,17 +86,19 @@
 <td id = "right">
 
 <div id = "navigation_links">
-	<a href = "./index.html">Home>></a>
-	<a href = "./reference_main.html">References>></a>
-	<a  id = "current_link" href = "#"></a> <!--This will be create automatically-->
-
-	<h1 id = "list_title" style = "text-align:center"></h1>
-	<hr>
+	<a href = "./index.html">Home>></a> 
+	<h1 style = "text-align:center"> Search Results </h1>
+	<hr >
 </div>
 
+
 <div id = "main_content">
-	<table class = "content_tb" id = "tag_list"> <!-- This table will be created automatically -->
-	</table>
+	<section id="search_result">
+		<h2 id="default"></h2>
+	</section>
+	<!-- Found results will be made here -->
+	<pre></pre>
+	<pre2></pre2>
 </div>
 
 <div id = "footer">
@@ -102,9 +112,12 @@
 </tr>
 </table>
 
-<script src = "./scripts/reference_nav_lib.js"></script>
-
-<script src="./scripts/search_bar_lib.js"></script>
+<script src="./scripts/search_result_lib.js"></script>
 
 </body>
 </html>
+ 
+
+
+
+

@@ -35,6 +35,8 @@ p.linebreakwraper {width: 100%}
 
 <body id = "whole_page">
 
+<noscript>Javascript is now unavaliable on your browser, and content can not be loaded. Please Check your Javascript setting</noscript>
+
 <div id = "logo">
 	<div id = "nav_bar">
 		<table class = "container_tb" id = "nav_bar_container" >
@@ -51,8 +53,9 @@ p.linebreakwraper {width: 100%}
 					</div>
 				</td>
 				<td>
-					<form action = "./form.html">
-						<input id = "nav_search_box"    type = "text" value = " Search here ...">
+					<form id="nav_form">
+						<input id = "nav_search_box" type = "text" value = "Click GO to search">
+						<input type="button" value="GO" style="background:#1f1f20;color:white; border:hidden"  onclick = "updateSearchTerm();">
 					</form>
 				</td>
 			</tr>
@@ -180,6 +183,7 @@ p.linebreakwraper {width: 100%}
 </table>
 
 <script src = "./scripts/form_lib.js"></script>
+<script src="./scripts/search_bar_lib.js"></script>
 
 </body>
 </html>

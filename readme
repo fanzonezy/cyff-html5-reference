@@ -19,7 +19,7 @@ Tag_info
 				...
 			      },
 		example:["line1", "line2", ...],
-		brower_support:[ "Yes/No", ...],
+		browerse_support:[ "Yes/No", ...],
 		default_css["line1", "line2", ...]
 	       }
 

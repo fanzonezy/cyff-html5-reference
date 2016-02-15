@@ -4,8 +4,8 @@ The first data structure is nav_info. It's organized by tags' categories:
 
 nav_info
  |_______category1
- |__ ...   |________tag1 : { "brief definition"}
-		   |__ ...
+ |__ ...   |________{tag1 : "brief definition"}
+	   |__ ...
 
 
 The second data structure is tag_info. 

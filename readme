@@ -11,17 +11,17 @@ nav_info
 The second data structure is tag_info. 
 Tag_info
  |_______tag1:{ 
- |__ ...		category: "...",
-				definition: "...",
-				usage:["line1", "line2", ...],
-				spec_of_attr:{
-								attr1:['value', 'sepcificatoin'],
-								...
-							  },
-				example:["line1", "line2", ...],
-				brower_support:[ "Yes/No", ...],
-				default_css["line1", "line2", ...]
-			  }
+ |__ ...	category: "...",
+		definition: "...",
+		usage:["line1", "line2", ...],
+		spec_of_attr:{
+				attr1:['value', 'sepcificatoin'],
+				...
+			      },
+		example:["line1", "line2", ...],
+		brower_support:[ "Yes/No", ...],
+		default_css["line1", "line2", ...]
+	       }
 
 you can see that we have used some techniques to prereserve the original format of text. Like, in 'usage','example' and 'default_css', we break original string into several lines to preserve the formats of them. Why not just use original string, you will see the reason.
 
